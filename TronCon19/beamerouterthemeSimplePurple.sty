@@ -1,0 +1,50 @@
+\mode<presentation>
+
+% frame title bar
+\defbeamertemplate*{frametitle}{SimplePurple}[1][]{
+    \vskip0.01\paperheight%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0.1\paperheight]{frametitle}
+        \begin{tikzpicture}
+            \useasboundingbox (0, 0) rectangle (\the\paperwidth, 0.12\paperheight);
+            \draw[thick,myPurple] (0.03\paperwidth,0.5) -- +(0.94\paperwidth, 0);
+            \node[anchor=west, fill=myWhite, font=\usebeamerfont{frametitle}]
+                at (0.05\paperwidth,0.5) {\MakeUppercase\insertframetitle};%
+            \node[anchor=west, font=\usebeamerfont{framesubtitle}]
+                at (0.095\paperwidth,0.1) {\color{myDPurple}\insertframesubtitle};%
+        \end{tikzpicture}
+    \end{beamercolorbox}
+}
+
+
+% make footer [section  |  short title  | page#]
+% \setbeamertemplate{footline}{%
+%     \begin{tikzpicture}
+%         \useasboundingbox (0, 0) rectangle(\the\paperwidth, 0.035\paperheight);
+%         \ifnum\thepage>1\relax%
+%             \fill[color=myLPurple] (0, 0) rectangle (\the\paperwidth, 0.035\paperheight);
+%             \node[anchor=west, myBlack] at (0,0.175)
+%             {\hspace{5pt}\let\hyperlink\@secondoftwo\insertsection};
+%             \node[anchor=center, myBlack] at (0.5\paperwidth,0.15)
+%                 {\let\hyperlink\@secondoftwo\insertshorttitle};
+%             \node[anchor=east, myBlack] at (0.985\paperwidth,0.175){
+%                 \insertframenumber\,/\,\inserttotalframenumber};
+%         \fi
+%     \end{tikzpicture}
+% }
+
+% make footer [author  |  short title  | page#]
+\setbeamertemplate{footline}{%
+    \begin{tikzpicture}
+        \useasboundingbox (0, 0) rectangle(\the\paperwidth, 0.035\paperheight);
+        \ifnum\thepage>1\relax%
+            \fill[color=myLPurple] (0, 0) rectangle (\the\paperwidth, 0.035\paperheight);
+            \node[anchor=west, myBlack] at (0,0.175){\hspace{5pt}\insertauthor};
+            \node[anchor=center, myBlack] at (0.5\paperwidth,0.15)
+                {\let\hyperlink\@secondoftwo\insertshorttitle};
+            \node[anchor=east, myBlack] at (0.985\paperwidth,0.175){
+                \insertframenumber\,/\,\inserttotalframenumber};
+        \fi
+    \end{tikzpicture}
+}
+
+\mode<all>

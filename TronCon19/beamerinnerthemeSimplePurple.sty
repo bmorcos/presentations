@@ -1,0 +1,75 @@
+\mode<presentation>
+
+% make background for title frame, and set other frames to blank
+%https://www.pngkey.com/maxpic/u2a9o0y3o0q8e6o0/
+\setbeamertemplate{background}{
+    \begin{tikzpicture}
+        \useasboundingbox (0, 0) rectangle(\the\paperwidth, \the\paperheight);
+        \fill[color=myWhite] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+        \node[anchor=south west, xshift=-0.15cm, yshift=-0.15cm, opacity=0.85] at (0.0,0.0)
+            {\includegraphics[width=\paperwidth]
+            {UWTRON.jpg}};%
+        \node[anchor=center, xshift=0.5cm, opacity=0.85] at (0.5\paperwidth,0.5\paperheight)
+            {\includegraphics[height=\paperheight, width=2.\paperwidth]
+            {streak.png}};%
+        \ifnum\thepage>1\relax%
+            \fill[myWhite,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+        \fi
+    \end{tikzpicture}
+
+}
+
+% make title frame
+\defbeamertemplate*{title page}{SimplePurple}[1][]
+{
+    \vskip1.5cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=5pt,#1]{title}
+        \usebeamerfont{title}\MakeUppercase\inserttitle\par%
+    \end{beamercolorbox}%
+    \vskip5pt%
+    \begin{beamercolorbox}[wd=12cm,leftskip=15pt,#1]{subtitle}
+        \usebeamerfont{subtitle}\insertsubtitle\par%
+    \end{beamercolorbox}%
+    \vskip1.7cm%
+    % \begin{beamercolorbox}[wd=12cm,leftskip=5pt,#1]{author}
+    %     \usebeamerfont{author}\insertauthor%
+    % \end{beamercolorbox}
+    % \vskip5pt%
+    % \begin{beamercolorbox}[wd=12cm,leftskip=5pt,#1]{date}
+    %     \usebeamerfont{author}\insertdate%
+    \vskip2.5cm%
+    % \end{beamercolorbox}
+
+}
+
+% Bullet shapes
+\setbeamertemplate{itemize item}[triangle]
+\setbeamertemplate{itemize subitem}{
+    \begin{tikzpicture}%
+        \draw (0,0.7ex) -- (0,0) -- (0.75em,0);
+        \draw (0.55em,0.2em) -- (0.75em,0) -- (0.55em,-0.2em);
+      \end{tikzpicture}%
+
+}
+\setbeamertemplate{enumerate subitem}{\alph{enumii}.}
+
+% Remove caption prefixes
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+%automatically generate section frame
+%https://www.kissclipart.com/why-dont-we-clipart-why-dont-we-something-differen-rp3xsj/
+\AtBeginSection{\frame{\sectionpage}}
+\defbeamertemplate*{section page}{ABR}[1][]
+{
+    \begin{tikzpicture}
+        \useasboundingbox (0, 0) rectangle(\the\paperwidth, \the\paperheight);
+        \node[anchor=center, xshift=-0.5cm, yshift=0.cm, opacity=0.5] at
+            (0.5\paperwidth,0.5\paperheight)
+            {\includegraphics[height=\the\paperheight, width=\the\paperwidth]
+            {splotch.png}};%
+        \node[anchor=center, font=\usebeamerfont{sectiontitle}, myBlack] at
+            (0.5\linewidth,0.5\paperheight)
+            {\let\hyperlink\@secondoftwo\centering\insertsection};
+    \end{tikzpicture}
+
+}
